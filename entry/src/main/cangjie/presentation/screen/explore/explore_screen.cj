@@ -4,12 +4,15 @@ import kit.ArkUI.*
 import std.collection.ArrayList
 import ohos.arkui.state_macro_manage.*
 import ohos_app_cangjie_entry.domain.model.CategoryItem
+import ohos_app_cangjie_entry.domain.model.ProductItem
 import ohos_app_cangjie_entry.presentation.common.card.categoryCard
-import ohos_app_cangjie_entry.presentation.component.searchViewBar
+import ohos_app_cangjie_entry.presentation.component.SearchViewBar
 import ohos_app_cangjie_entry.ui.theme.Black
 import ohos_app_cangjie_entry.utils.DataDummy
 import ohos_app_cangjie_entry.utils.STRING_FIND_PRODUCTS
 import ohos_app_cangjie_entry.utils.STRING_SEARCH_CATEGORY
+
+func exploreSearchAddToCart(productItem: ProductItem): Unit {}
 
 @Component
 public class ExploreScreen {
@@ -28,10 +31,10 @@ public class ExploreScreen {
                     .padding(top: 16)
 
                 Column() {
-                    searchViewBar(STRING_SEARCH_CATEGORY, query: this.searchQuery, onValueChange: { value: String =>
-                        this.searchQuery = value
-                    }, onClickSearch: { value: String =>
-                        this.searchQuery = value
+                    SearchViewBar(hint: STRING_SEARCH_CATEGORY, query: this.searchQuery, showInlineResults: true, onValueChange: { _: String =>
+                    }, onClickSearch: { _: String =>
+                    }, onClickAdd: { productItem: ProductItem =>
+                        exploreSearchAddToCart(productItem)
                     })
                 }
                 .padding(left: 16, right: 16)

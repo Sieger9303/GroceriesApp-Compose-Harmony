@@ -16,44 +16,54 @@ func searchViewBarProducts(query: String): ArrayList<ProductItem> {
     return AppContainer.useCases().searchProductUseCase.invoke(query)
 }
 
-@Builder
-public func searchViewBar(
-    hint: String,
-    query!: String = "",
-    onValueChange!: (String) -> Unit = { _ => },
-    onClickSearch!: (String) -> Unit = { _ => }
-): Unit {
-    Column(space: 0) {
-        Row(space: 10) {
-            Image(@r(app.media.ic_search))
-                .width(18)
-                .height(18)
-                .objectFit(ImageFit.Contain)
+@Component
+public class SearchViewBar {
+    @Prop var hint: String
+    @Link var query: String
+    var showInlineResults: Bool = false
+    var onValueChange: (String) -> Unit = { _ => }
+    var onClickSearch: (String) -> Unit = { _ => }
+    var onClickCard: (ProductItem) -> Unit = { _ => }
+    var onClickAdd: (ProductItem) -> Unit = { _ => }
 
-            TextInput(placeholder: hint, text: query)
-                .layoutWeight(1)
-                .height(48)
-                .backgroundColor(GrayBackground)
-                .fontSize(12.fp)
-                .fontColor(Black)
-                .placeholderColor(GraySecondTextColor)
-                .caretColor(Black)
-                .onChange({ value =>
-                    onValueChange(value)
-                })
-                .onSubmit({ _ =>
-                    onClickSearch(query)
-                })
-        }
-        .width(100.percent)
-        .height(48)
-        .padding(left: 16, right: 16)
-        .backgroundColor(GrayBackground)
-        .borderRadius(16.fp)
-        .alignItems(VerticalAlign.Center)
+    public func build(): Unit {
+        Column(space: 16) {
+            Row(space: 10) {
+                Image(@r(app.media.ic_search))
+                    .width(18)
+                    .height(18)
+                    .objectFit(ImageFit.Contain)
 
-        if (!normalizedQuery(query).isEmpty()) {
-            listContentProduct(searchViewBarProducts(query), title: "", horizontal: false)
+                TextInput(placeholder: this.hint, text: this.query)
+                    .layoutWeight(1)
+                    .height(48)
+                    .backgroundColor(GrayBackground)
+                    .fontSize(12.fp)
+                    .fontColor(Black)
+                    .placeholderColor(GraySecondTextColor)
+                    .caretColor(Black)
+                    .onChange({ value =>
+                        this.query = value
+                        this.onValueChange(value)
+                    })
+                    .onSubmit({ _ =>
+                        this.onClickSearch(this.query)
+                    })
+            }
+            .width(100.percent)
+            .height(48)
+            .padding(left: 16, right: 16)
+            .backgroundColor(GrayBackground)
+            .borderRadius(16.fp)
+            .alignItems(VerticalAlign.Center)
+
+            if (this.showInlineResults && !normalizedQuery(this.query).isEmpty()) {
+                listContentProduct(searchViewBarProducts(this.query), title: "", horizontal: false, onClickCard: { productItem: ProductItem =>
+                    this.onClickCard(productItem)
+                }, onClickAdd: { productItem: ProductItem =>
+                    this.onClickAdd(productItem)
+                })
+            }
         }
     }
 }

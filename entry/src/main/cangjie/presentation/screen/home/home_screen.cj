@@ -7,7 +7,7 @@ import std.collection.ArrayList
 import ohos_app_cangjie_entry.domain.model.ProductItem
 import ohos_app_cangjie_entry.navigation.ROUTE_SEARCH
 import ohos_app_cangjie_entry.presentation.common.content.listContentProduct
-import ohos_app_cangjie_entry.presentation.component.searchViewBar
+import ohos_app_cangjie_entry.presentation.component.SearchViewBar
 import ohos_app_cangjie_entry.presentation.component.SliderBanner
 import ohos_app_cangjie_entry.ui.theme.GrayThirdTextColor
 import ohos_app_cangjie_entry.utils.STRING_BEST_SELLING
@@ -69,13 +69,11 @@ public class HomeScreen {
             Column(space: 20) {
                 HeaderLocationHome()
 
-                searchViewBar(STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { value: String =>
-                    this.searchQuery = value
+                SearchViewBar(hint: STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { value: String =>
                     if (!normalizedQuery(value).isEmpty()) {
                         this.activeRoute = ROUTE_SEARCH
                     }
                 }, onClickSearch: { value: String =>
-                    this.searchQuery = value
                     if (!normalizedQuery(value).isEmpty()) {
                         this.activeRoute = ROUTE_SEARCH
                     }
