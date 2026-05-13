@@ -25,16 +25,9 @@ func exclusiveProducts(): ArrayList<ProductItem> {
 func bestSellingProducts(): ArrayList<ProductItem> {
     let products = HomeStateHolder().getProducts()
     let items = ArrayList<ProductItem>()
-    items.add(products[9])
-    items.add(products[8])
-    items.add(products[7])
-    items.add(products[6])
-    items.add(products[5])
-    items.add(products[4])
-    items.add(products[3])
-    items.add(products[2])
-    items.add(products[1])
-    items.add(products[0])
+    for (index in products.size - 1..-1 : -1) {
+        items.add(products[index])
+    }
     return items
 }
 
