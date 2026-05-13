@@ -12,6 +12,7 @@ import ohos_app_cangjie_entry.ui.theme.GrayBackground
 import ohos_app_cangjie_entry.ui.theme.GrayBackgroundSecond
 import ohos_app_cangjie_entry.ui.theme.GraySecondTextColor
 import ohos_app_cangjie_entry.ui.theme.Green
+import ohos_app_cangjie_entry.utils.formatPrice
 import ohos_app_cangjie_entry.utils.STRING_ADD_TO_CART
 import ohos_app_cangjie_entry.utils.STRING_ADD_TO_CART_SUCCESS_PREFIX
 import ohos_app_cangjie_entry.utils.STRING_NUTRITIONS
@@ -60,7 +61,7 @@ func detailTopContent(product: ProductItem): Unit {
 
             Blank().height(8)
 
-            Text("$${product.price}")
+            Text("$${formatPrice(product.price)}")
                 .fontSize(18.fp)
                 .fontColor(Black)
                 .fontWeight(FontWeight.Bold)

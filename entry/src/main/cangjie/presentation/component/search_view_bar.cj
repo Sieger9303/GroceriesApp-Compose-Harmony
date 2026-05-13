@@ -12,7 +12,7 @@ public func searchViewBar(
     hint: String,
     query!: String = "",
     onValueChange!: (String) -> Unit = { _ => },
-    onClickSearch!: (String) -> Unit = { _ => }
+    onClickSearch!: () -> Unit = { => }
 ): Unit {
     Row(space: 10) {
         Image(@r(app.media.ic_search))
@@ -23,7 +23,7 @@ public func searchViewBar(
         TextInput(placeholder: hint, text: query)
             .layoutWeight(1)
             .height(48)
-            .backgroundColor(0x00000000)
+            .backgroundColor(GrayBackground)
             .fontSize(12.fp)
             .fontColor(Black)
             .placeholderColor(GraySecondTextColor)
@@ -32,7 +32,7 @@ public func searchViewBar(
                 onValueChange(value)
             })
             .onSubmit({ _ =>
-                onClickSearch(query)
+                onClickSearch()
             })
     }
     .width(100.percent)

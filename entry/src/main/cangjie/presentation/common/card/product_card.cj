@@ -8,6 +8,7 @@ import ohos_app_cangjie_entry.ui.theme.Black
 import ohos_app_cangjie_entry.ui.theme.GrayBorderStroke
 import ohos_app_cangjie_entry.ui.theme.GraySecondTextColor
 import ohos_app_cangjie_entry.ui.theme.Green
+import ohos_app_cangjie_entry.utils.formatPrice
 
 @Builder
 public func productImage(imageName: String, height: Int64): Unit {
@@ -72,25 +73,29 @@ public func productImage(imageName: String, height: Int64): Unit {
 @Builder
 public func productCard(productItem: ProductItem, onClickCard!: () -> Unit = { => }, onClickAdd!: () -> Unit = { => }): Unit {
     Column() {
-        productImage(productItem.image, 80)
+        Column() {
+            productImage(productItem.image, 80)
 
-        Blank().height(24)
+            Blank().height(24)
 
-        Text(productItem.title)
-            .fontSize(16.fp)
-            .fontColor(Black)
-            .fontWeight(FontWeight.Bold)
+            Text(productItem.title)
+                .fontSize(16.fp)
+                .fontColor(Black)
+                .fontWeight(FontWeight.Bold)
 
-        Blank().height(6)
+            Blank().height(6)
 
-        Text(productItem.unit)
-            .fontSize(12.fp)
-            .fontColor(GraySecondTextColor)
+            Text(productItem.unit)
+                .fontSize(12.fp)
+                .fontColor(GraySecondTextColor)
 
-        Blank().height(20)
+            Blank().height(20)
+        }
+        .width(100.percent)
+        .onClick({ _ => onClickCard() })
 
         Row() {
-            Text("$${productItem.price}")
+            Text("$${formatPrice(productItem.price)}")
                 .fontSize(18.fp)
                 .fontColor(Black)
                 .fontWeight(FontWeight.Bold)
@@ -117,5 +122,4 @@ public func productCard(productItem: ProductItem, onClickCard!: () -> Unit = { =
     .borderWidth(1)
     .borderColor(GrayBorderStroke)
     .margin(12)
-    .onClick({ _ => onClickCard() })
 }

@@ -9,6 +9,7 @@ import ohos_app_cangjie_entry.presentation.common.card.productImage
 import ohos_app_cangjie_entry.ui.theme.Black
 import ohos_app_cangjie_entry.ui.theme.GrayBorderStroke
 import ohos_app_cangjie_entry.ui.theme.GraySecondTextColor
+import ohos_app_cangjie_entry.utils.formatPrice
 import ohos_app_cangjie_entry.utils.STRING_CART_EMPTY_MESSAGE
 import ohos_app_cangjie_entry.utils.STRING_OOPS_NO_DATA
 
@@ -33,7 +34,7 @@ public func contentCart(productItem: ProductItem, onClickDeleteCart!: (ProductIt
             .alignSelf(ItemAlign.Center)
             .padding(left: 16)
 
-            Text("$${productItem.price}")
+            Text("$${formatPrice(productItem.price)}")
                 .fontSize(18.fp)
                 .fontColor(Black)
                 .fontWeight(FontWeight.Bold)

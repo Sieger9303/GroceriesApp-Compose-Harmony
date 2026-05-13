@@ -2,21 +2,18 @@ package ohos_app_cangjie_entry.presentation.screen.home
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.arkui.state_management.AppStorage
 import ohos.resource.*
 import std.collection.ArrayList
 import ohos_app_cangjie_entry.domain.model.ProductItem
+import ohos_app_cangjie_entry.navigation.ROUTE_SEARCH
 import ohos_app_cangjie_entry.presentation.common.content.listContentProduct
 import ohos_app_cangjie_entry.presentation.component.searchViewBar
 import ohos_app_cangjie_entry.presentation.component.SliderBanner
 import ohos_app_cangjie_entry.ui.theme.GrayThirdTextColor
-import ohos_app_cangjie_entry.utils.MAIN_ACTIVE_ROUTE_KEY
-import ohos_app_cangjie_entry.utils.MAIN_SELECTED_PRODUCT_ID_KEY
 import ohos_app_cangjie_entry.utils.STRING_BEST_SELLING
 import ohos_app_cangjie_entry.utils.STRING_EXCLUSIVE_OFFER
 import ohos_app_cangjie_entry.utils.STRING_SAMPLE_COUNTRY
 import ohos_app_cangjie_entry.utils.STRING_SEARCH_STORE
-import ohos_app_cangjie_entry.utils.showToastShort
 
 func exclusiveProducts(): ArrayList<ProductItem> {
     return HomeStateHolder().getProducts()
@@ -61,7 +58,9 @@ public func HeaderLocationHome(): Unit {
 
 @Component
 public class HomeScreen {
+    @StorageLink["main_active_route"] var activeRoute: String = "home_screen"
     @StorageLink["main_search_query"] var searchQuery: String = ""
+    @StorageLink["main_selected_product_id"] var selectedProductId: Int64 = 0
     @StorageLink["product_state_revision"] var productStateRevision: Int64 = 0
 
     public func build(): Unit {
@@ -72,19 +71,18 @@ public class HomeScreen {
                 searchViewBar(STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { value: String =>
                     this.searchQuery = value
                     if (!value.isEmpty()) {
-                        AppStorage.setOrCreate<String>(MAIN_ACTIVE_ROUTE_KEY, "search_screen")
+                        this.activeRoute = ROUTE_SEARCH
                     }
-                }, onClickSearch: { value: String =>
-                    this.searchQuery = value
-                    if (!value.isEmpty()) {
-                        AppStorage.setOrCreate<String>(MAIN_ACTIVE_ROUTE_KEY, "search_screen")
+                }, onClickSearch: { =>
+                    if (!this.searchQuery.isEmpty()) {
+                        this.activeRoute = ROUTE_SEARCH
                     }
                 })
 
                 SliderBanner()
 
                 listContentProduct(exclusiveProducts(), title: STRING_EXCLUSIVE_OFFER, onClickCard: { productItem: ProductItem =>
-                    AppStorage.setOrCreate<Int64>(MAIN_SELECTED_PRODUCT_ID_KEY, productItem.id)
+                    this.selectedProductId = productItem.id
                 }, onClickAdd: { productItem: ProductItem =>
                     addHomeProductToCart(productItem)
                     this.productStateRevision = this.productStateRevision + 1
@@ -93,7 +91,7 @@ public class HomeScreen {
                 Blank().height(24)
 
                 listContentProduct(bestSellingProducts(), title: STRING_BEST_SELLING, onClickCard: { productItem: ProductItem =>
-                    AppStorage.setOrCreate<Int64>(MAIN_SELECTED_PRODUCT_ID_KEY, productItem.id)
+                    this.selectedProductId = productItem.id
                 }, onClickAdd: { productItem: ProductItem =>
                     addHomeProductToCart(productItem)
                     this.productStateRevision = this.productStateRevision + 1

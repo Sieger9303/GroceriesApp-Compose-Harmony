@@ -2,13 +2,11 @@ package ohos_app_cangjie_entry.presentation.screen.search
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.arkui.state_management.AppStorage
 import std.collection.ArrayList
 import ohos_app_cangjie_entry.domain.model.ProductItem
 import ohos_app_cangjie_entry.presentation.common.content.emptyContent
 import ohos_app_cangjie_entry.presentation.common.content.listContentProduct
 import ohos_app_cangjie_entry.presentation.component.searchViewBar
-import ohos_app_cangjie_entry.utils.MAIN_SELECTED_PRODUCT_ID_KEY
 import ohos_app_cangjie_entry.utils.STRING_SEARCH_STORE
 import ohos_app_cangjie_entry.utils.normalizedQuery
 
@@ -23,6 +21,7 @@ func addSearchResultToCart(productItem: ProductItem): Unit {
 @Component
 public class SearchScreen {
     @StorageLink["main_search_query"] var searchQuery: String = ""
+    @StorageLink["main_selected_product_id"] var selectedProductId: Int64 = 0
     @StorageLink["product_state_revision"] var productStateRevision: Int64 = 0
 
     public func build(): Unit {
@@ -30,15 +29,15 @@ public class SearchScreen {
             Column(space: 16) {
                 searchViewBar(STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { value: String =>
                     this.searchQuery = value
-                }, onClickSearch: { value: String =>
-                    this.searchQuery = value
+                }, onClickSearch: { =>
+                    this.searchQuery = this.searchQuery
                 })
 
                 if (normalizedQuery(this.searchQuery).isEmpty()) {
                     emptyContent()
                 } else {
                     listContentProduct(searchProducts(this.searchQuery), title: "", horizontal: false, onClickCard: { productItem: ProductItem =>
-                        AppStorage.setOrCreate<Int64>(MAIN_SELECTED_PRODUCT_ID_KEY, productItem.id)
+                        this.selectedProductId = productItem.id
                     }, onClickAdd: { productItem: ProductItem =>
                         addSearchResultToCart(productItem)
                         this.productStateRevision = this.productStateRevision + 1

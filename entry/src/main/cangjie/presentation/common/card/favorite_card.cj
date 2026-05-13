@@ -7,6 +7,7 @@ import ohos_app_cangjie_entry.domain.model.ProductItem
 import ohos_app_cangjie_entry.ui.theme.Black
 import ohos_app_cangjie_entry.ui.theme.GrayBorderStroke
 import ohos_app_cangjie_entry.ui.theme.GraySecondTextColor
+import ohos_app_cangjie_entry.utils.formatPrice
 
 @Builder
 public func favoriteCard(productItem: ProductItem, onClick!: () -> Unit = { => }): Unit {
@@ -29,7 +30,7 @@ public func favoriteCard(productItem: ProductItem, onClick!: () -> Unit = { => }
             .alignSelf(ItemAlign.Center)
 
             Row(space: 0) {
-                Text("${productItem.price}")
+                Text("$${formatPrice(productItem.price)}")
                     .fontSize(16.fp)
                     .fontColor(Black)
                     .fontWeight(FontWeight.Bold)

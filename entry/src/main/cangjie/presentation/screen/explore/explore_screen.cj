@@ -44,8 +44,8 @@ public class ExploreScreen {
                 Column() {
                     searchViewBar(STRING_SEARCH_CATEGORY, query: this.searchQuery, onValueChange: { value: String =>
                         this.searchQuery = value
-                    }, onClickSearch: { value: String =>
-                        this.searchQuery = value
+                    }, onClickSearch: { =>
+                        this.searchQuery = this.searchQuery
                     })
                 }
                 .padding(left: 16, right: 16)
