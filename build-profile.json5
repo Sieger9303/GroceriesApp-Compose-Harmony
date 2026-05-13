@@ -1,0 +1,56 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\Sieger\\.ohos\\config\\default_1-HelloWord_7Ox7lSfyB0c6TWwHnpYdzYuiugpEkv-y2bktbmVWWv4=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B2FFDA7FEECDC958A6AF0C1C0297E857FAF1EDBE54ED99689160B45143A874206033764351EF56F",
+          "profile": "C:\\Users\\Sieger\\.ohos\\config\\default_1-HelloWord_7Ox7lSfyB0c6TWwHnpYdzYuiugpEkv-y2bktbmVWWv4=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\Sieger\\.ohos\\config\\default_1-HelloWord_7Ox7lSfyB0c6TWwHnpYdzYuiugpEkv-y2bktbmVWWv4=.p12",
+          "storePassword": "0000001B4054629C079655D1A4E1F63790625E81A126B782ACB5636CE6BDCCCF7B3C50F6B45EA8CAAAF6F1"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "targetSdkVersion": "6.0.2(22)",
+        "compatibleSdkVersion": "6.0.2(22)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug"
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "GroceriesApp"
+    },
+    {
+      "name": "menu_shop",
+      "value": "Shop"
+    },
+    {
+      "name": "menu_explore",
+      "value": "Explore"
+    },
+    {
+      "name": "menu_cart",
+      "value": "Cart"
+    },
+    {
+      "name": "menu_about",
+      "value": "About"
+    },
+    {
+      "name": "image_on_boarding",
+      "value": "Image On Boarding"
+    },
+    {
+      "name": "welcome_to_store",
+      "value": "Welcome to \n our store"
+    },
+    {
+      "name": "desc_welcome",
+      "value": "Ger your groceries in as fast as one hour"
+    },
+    {
+      "name": "get_started",
+      "value": "Get Started"
+    },
+    {
+      "name": "search_store",
+      "value": "Search Store"
+    },
+    {
+      "name": "search_category",
+      "value": "Search Category"
+    },
+    {
+      "name": "image_slider",
+      "value": "Image Slider"
+    },
+    {
+      "name": "image_product",
+      "value": "Image Product"
+    },
+    {
+      "name": "add",
+      "value": "Add"
+    },
+    {
+      "name": "image_category",
+      "value": "Image Category"
+    },
+    {
+      "name": "arrow_right",
+      "value": "Arrow Right"
+    },
+    {
+      "name": "image_favorite",
+      "value": "Image Favorite"
+    },
+    {
+      "name": "product_detail",
+      "value": "Product Detail"
+    },
+    {
+      "name": "nutritions",
+      "value": "Nutritions"
+    },
+    {
+      "name": "review",
+      "value": "Review"
+    },
+    {
+      "name": "add_to_cart",
+      "value": "Add To Cart"
+    },
+    {
+      "name": "logo_app",
+      "value": "Logo App"
+    },
+    {
+      "name": "shop",
+      "value": "Shop"
+    },
+    {
+      "name": "image_location",
+      "value": "Image Location"
+    },
+    {
+      "name": "sample_country",
+      "value": "Indonesia"
+    },
+    {
+      "name": "see_all",
+      "value": "See All"
+    },
+    {
+      "name": "exclusive_offer",
+      "value": "Exclusive Offer"
+    },
+    {
+      "name": "best_selling",
+      "value": "Best Selling"
+    },
+    {
+      "name": "find_products",
+      "value": "Find Products"
+    },
+    {
+      "name": "image_profile",
+      "value": "Image Profile"
+    },
+    {
+      "name": "name_profile",
+      "value": "Hari Agus Widakdo"
+    },
+    {
+      "name": "email_profile",
+      "value": "haryagus97@gmail.com"
+    },
+    {
+      "name": "image_about",
+      "value": "Image About"
+    },
+    {
+      "name": "logout",
+      "value": "Logout"
+    },
+    {
+      "name": "image_delete",
+      "value": "Image Delete"
+    },
+    {
+      "name": "my_cart",
+      "value": "My Cart"
+    },
+    {
+      "name": "image_content_empty",
+      "value": "Image Content Empty"
+    },
+    {
+      "name": "oops_no_data",
+      "value": "Ooops! No Data"
+    }
+  ]
+}

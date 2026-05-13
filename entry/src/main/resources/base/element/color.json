@@ -1,0 +1,72 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#53B175"
+    },
+    {
+      "name": "black",
+      "value": "#FF000000"
+    },
+    {
+      "name": "white",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "gray_background",
+      "value": "#FFF2F3F2"
+    },
+    {
+      "name": "gray_background_second",
+      "value": "#FFEBEBEB"
+    },
+    {
+      "name": "text_black",
+      "value": "#FF181725"
+    },
+    {
+      "name": "green",
+      "value": "#FF53B175"
+    },
+    {
+      "name": "gray_text",
+      "value": "#FFFCFCFC"
+    },
+    {
+      "name": "gray_text_secondary",
+      "value": "#FF7C7C7C"
+    },
+    {
+      "name": "gray_text_tertiary",
+      "value": "#FF4C4F4D"
+    },
+    {
+      "name": "gray_border_stroke",
+      "value": "#FFE2E2E2"
+    },
+    {
+      "name": "background_category_1",
+      "value": "#FFEEF8F2"
+    },
+    {
+      "name": "background_category_2",
+      "value": "#FFFFF6EE"
+    },
+    {
+      "name": "background_category_3",
+      "value": "#FFFDE8E4"
+    },
+    {
+      "name": "background_category_4",
+      "value": "#FFF4EBF7"
+    },
+    {
+      "name": "background_category_5",
+      "value": "#FFFEF8E5"
+    },
+    {
+      "name": "background_category_6",
+      "value": "#FFEDF7FC"
+    }
+  ]
+}
