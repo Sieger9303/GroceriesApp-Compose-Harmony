@@ -18,9 +18,17 @@ import ohos_app_cangjie_entry.ui.theme.Green
 public func bottomBar(activeRoute: String, onRouteSelected!: (String) -> Unit = { _ => }): Unit {
     Row() {
         Column(space: 4) {
-            Image(@r(app.media.ic_home))
-                .width(22)
-                .height(22)
+            if (activeRoute == NAV_HOME_ROUTE) {
+                Image(@r(app.media.ic_home_selected))
+                    .width(22)
+                    .height(22)
+                    .objectFit(ImageFit.Contain)
+            } else {
+                Image(@r(app.media.ic_home))
+                    .width(22)
+                    .height(22)
+                    .objectFit(ImageFit.Contain)
+            }
             Text(NAV_HOME_TITLE)
                 .fontSize(12.fp)
                 .fontColor(if (activeRoute == NAV_HOME_ROUTE) { Green } else { GraySecondTextColor })
@@ -32,9 +40,17 @@ public func bottomBar(activeRoute: String, onRouteSelected!: (String) -> Unit = 
         .onClick({ _ => onRouteSelected(NAV_HOME_ROUTE) })
 
         Column(space: 4) {
-            Image(@r(app.media.ic_explore))
-                .width(22)
-                .height(22)
+            if (activeRoute == NAV_EXPLORE_ROUTE) {
+                Image(@r(app.media.ic_explore_selected))
+                    .width(22)
+                    .height(22)
+                    .objectFit(ImageFit.Contain)
+            } else {
+                Image(@r(app.media.ic_explore))
+                    .width(22)
+                    .height(22)
+                    .objectFit(ImageFit.Contain)
+            }
             Text(NAV_EXPLORE_TITLE)
                 .fontSize(12.fp)
                 .fontColor(if (activeRoute == NAV_EXPLORE_ROUTE) { Green } else { GraySecondTextColor })
@@ -46,9 +62,17 @@ public func bottomBar(activeRoute: String, onRouteSelected!: (String) -> Unit = 
         .onClick({ _ => onRouteSelected(NAV_EXPLORE_ROUTE) })
 
         Column(space: 4) {
-            Image(@r(app.media.ic_cart))
-                .width(22)
-                .height(22)
+            if (activeRoute == NAV_CART_ROUTE) {
+                Image(@r(app.media.ic_cart_selected))
+                    .width(22)
+                    .height(22)
+                    .objectFit(ImageFit.Contain)
+            } else {
+                Image(@r(app.media.ic_cart))
+                    .width(22)
+                    .height(22)
+                    .objectFit(ImageFit.Contain)
+            }
             Text(NAV_CART_TITLE)
                 .fontSize(12.fp)
                 .fontColor(if (activeRoute == NAV_CART_ROUTE) { Green } else { GraySecondTextColor })
@@ -60,9 +84,17 @@ public func bottomBar(activeRoute: String, onRouteSelected!: (String) -> Unit = 
         .onClick({ _ => onRouteSelected(NAV_CART_ROUTE) })
 
         Column(space: 4) {
-            Image(@r(app.media.ic_person))
-                .width(22)
-                .height(22)
+            if (activeRoute == NAV_ABOUT_ROUTE) {
+                Image(@r(app.media.ic_person_selected))
+                    .width(22)
+                    .height(22)
+                    .objectFit(ImageFit.Contain)
+            } else {
+                Image(@r(app.media.ic_person))
+                    .width(22)
+                    .height(22)
+                    .objectFit(ImageFit.Contain)
+            }
             Text(NAV_ABOUT_TITLE)
                 .fontSize(12.fp)
                 .fontColor(if (activeRoute == NAV_ABOUT_ROUTE) { Green } else { GraySecondTextColor })

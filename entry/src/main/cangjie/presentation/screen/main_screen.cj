@@ -2,7 +2,6 @@ package ohos_app_cangjie_entry.presentation.screen
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.arkui.state_management.AppStorage
 import ohos_app_cangjie_entry.navigation.NAV_ABOUT_ROUTE
 import ohos_app_cangjie_entry.navigation.NAV_CART_ROUTE
 import ohos_app_cangjie_entry.navigation.NAV_EXPLORE_ROUTE
@@ -18,26 +17,14 @@ import ohos_app_cangjie_entry.presentation.screen.search.SearchScreen
 import ohos_app_cangjie_entry.ui.theme.GrayBackground
 import ohos_app_cangjie_entry.ui.theme.GraySecondTextColor
 import ohos_app_cangjie_entry.ui.theme.Green
-import ohos_app_cangjie_entry.utils.MAIN_ACTIVE_ROUTE_KEY
-import ohos_app_cangjie_entry.utils.MAIN_SEARCH_QUERY_KEY
-import ohos_app_cangjie_entry.utils.MAIN_SELECTED_PRODUCT_ID_KEY
-import ohos_app_cangjie_entry.utils.PRODUCT_STATE_REVISION_KEY
 import ohos_app_cangjie_entry.utils.STRING_BACK
 import ohos_app_cangjie_entry.utils.STRING_PRODUCT_DETAIL
 
 @Component
 public class MainScreen {
-    @StorageLink["main_active_route"] var activeRoute: String = "home_screen"
+    @StorageLink["main_active_route"] var activeRoute: String = NAV_HOME_ROUTE
     @StorageLink["main_selected_product_id"] var selectedProductId: Int64 = 0
-    @StorageLink["product_state_revision"] var productStateRevision: Int64 = 0
     @StorageLink["main_search_query"] var searchQuery: String = ""
-
-    public func aboutToAppear(): Unit {
-        AppStorage.setOrCreate<String>(MAIN_ACTIVE_ROUTE_KEY, this.activeRoute)
-        AppStorage.setOrCreate<Int64>(MAIN_SELECTED_PRODUCT_ID_KEY, this.selectedProductId)
-        AppStorage.setOrCreate<Int64>(PRODUCT_STATE_REVISION_KEY, this.productStateRevision)
-        AppStorage.setOrCreate<String>(MAIN_SEARCH_QUERY_KEY, this.searchQuery)
-    }
 
     private func selectMainRoute(route: String): Unit {
         this.activeRoute = route
@@ -67,14 +54,9 @@ public class MainScreen {
             .layoutWeight(1)
 
             if (this.selectedProductId == 0 && this.activeRoute != ROUTE_SEARCH) {
-                Column() {
-                    bottomBar(this.activeRoute, onRouteSelected: { route =>
-                        this.selectMainRoute(route)
-                    })
-                }
-                .width(100.percent)
-                .padding(left: 0, right: 0, bottom: 0)
-                .backgroundColor(GrayBackground)
+                bottomBar(this.activeRoute, onRouteSelected: { route =>
+                    this.selectMainRoute(route)
+                })
             } else if (this.selectedProductId > 0) {
                 Row() {
                     Text(STRING_BACK)
