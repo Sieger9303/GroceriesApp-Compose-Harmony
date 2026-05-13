@@ -7,7 +7,7 @@ import ohos_app_cangjie_entry.navigation.NAV_CART_ROUTE
 import ohos_app_cangjie_entry.navigation.NAV_EXPLORE_ROUTE
 import ohos_app_cangjie_entry.navigation.NAV_HOME_ROUTE
 import ohos_app_cangjie_entry.navigation.ROUTE_SEARCH
-import ohos_app_cangjie_entry.presentation.component.bottomBar
+import ohos_app_cangjie_entry.presentation.component.BottomBar
 import ohos_app_cangjie_entry.presentation.screen.about.AboutScreen
 import ohos_app_cangjie_entry.presentation.screen.cart.CartScreen
 import ohos_app_cangjie_entry.presentation.screen.detail.DetailScreen
@@ -54,9 +54,7 @@ public class MainScreen {
             .layoutWeight(1)
 
             if (this.selectedProductId == 0 && this.activeRoute != ROUTE_SEARCH) {
-                bottomBar(this.activeRoute, onRouteSelected: { route =>
-                    this.selectMainRoute(route)
-                })
+                BottomBar()
             } else if (this.selectedProductId > 0) {
                 Row() {
                     Text(STRING_BACK)

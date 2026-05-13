@@ -22,7 +22,7 @@ public class RootNavigation {
 
     public func aboutToAppear(): Unit {
         AppStorage.setOrCreate<String>(APP_ROUTE_KEY, this.currentRoute)
-        AppStorage.setOrCreate<String>(MAIN_ACTIVE_ROUTE_KEY, NAV_HOME_ROUTE)
+        //AppStorage.setOrCreate<String>(MAIN_ACTIVE_ROUTE_KEY, NAV_HOME_ROUTE)
         AppStorage.setOrCreate<String>(MAIN_SEARCH_QUERY_KEY, "")
         AppStorage.setOrCreate<Int64>(MAIN_SELECTED_PRODUCT_ID_KEY, 0)
         AppStorage.setOrCreate<Int64>(PRODUCT_STATE_REVISION_KEY, 0)
