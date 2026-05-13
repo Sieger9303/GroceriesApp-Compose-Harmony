@@ -29,8 +29,8 @@ public class SearchScreen {
             Column(space: 16) {
                 searchViewBar(STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { value: String =>
                     this.searchQuery = value
-                }, onClickSearch: { =>
-                    this.searchQuery = this.searchQuery
+                }, onClickSearch: { value: String =>
+                    this.searchQuery = value
                 })
 
                 if (normalizedQuery(this.searchQuery).isEmpty()) {

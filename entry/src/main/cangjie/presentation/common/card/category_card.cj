@@ -7,44 +7,51 @@ import ohos_app_cangjie_entry.domain.model.CategoryItem
 import ohos_app_cangjie_entry.ui.theme.Black
 
 @Builder
+func categoryImage(imageName: String): Unit {
+    if (imageName == "category1") {
+        Image(@r(app.media.category1))
+            .width(100.percent)
+            .height(80)
+            .objectFit(ImageFit.Contain)
+    } else if (imageName == "category2") {
+        Image(@r(app.media.category2))
+            .width(100.percent)
+            .height(80)
+            .objectFit(ImageFit.Contain)
+    } else if (imageName == "category3") {
+        Image(@r(app.media.category3))
+            .width(100.percent)
+            .height(80)
+            .objectFit(ImageFit.Contain)
+    } else if (imageName == "category4") {
+        Image(@r(app.media.category4))
+            .width(100.percent)
+            .height(80)
+            .objectFit(ImageFit.Contain)
+    } else if (imageName == "category5") {
+        Image(@r(app.media.category5))
+            .width(100.percent)
+            .height(80)
+            .objectFit(ImageFit.Contain)
+    } else if (imageName == "category6") {
+        Image(@r(app.media.category6))
+            .width(100.percent)
+            .height(80)
+            .objectFit(ImageFit.Contain)
+    } else {
+        Image(@r(app.media.category1))
+            .width(100.percent)
+            .height(80)
+            .objectFit(ImageFit.Contain)
+    }
+}
+
+@Builder
 public func categoryCard(categoryItem!: CategoryItem): Unit {
     Column() {
-        if (categoryItem.image == "category1") {
-            Image(@r(app.media.category1))
-                .width(100.percent)
-                .height(80)
-                .objectFit(ImageFit.Contain)
-        } else if (categoryItem.image == "category2") {
-            Image(@r(app.media.category2))
-                .width(100.percent)
-                .height(80)
-                .objectFit(ImageFit.Contain)
-        } else if (categoryItem.image == "category3") {
-            Image(@r(app.media.category3))
-                .width(100.percent)
-                .height(80)
-                .objectFit(ImageFit.Contain)
-        } else if (categoryItem.image == "category4") {
-            Image(@r(app.media.category4))
-                .width(100.percent)
-                .height(80)
-                .objectFit(ImageFit.Contain)
-        } else if (categoryItem.image == "category5") {
-            Image(@r(app.media.category5))
-                .width(100.percent)
-                .height(80)
-                .objectFit(ImageFit.Contain)
-        } else if (categoryItem.image == "category6") {
-            Image(@r(app.media.category6))
-                .width(100.percent)
-                .height(80)
-                .objectFit(ImageFit.Contain)
-        } else {
-            Image(@r(app.media.category1))
-                .width(100.percent)
-                .height(80)
-                .objectFit(ImageFit.Contain)
-        }
+        Blank().layoutWeight(1)
+
+        categoryImage(categoryItem.image)
 
         Blank().height(20)
 
@@ -54,10 +61,13 @@ public func categoryCard(categoryItem!: CategoryItem): Unit {
             .fontWeight(FontWeight.Bold)
             .textAlign(TextAlign.Center)
             .width(100.percent)
+
+        Blank().layoutWeight(1)
     }
     .width(100.percent)
     .height(174)
-    .padding(left: 40, top: 16, right: 40, bottom: 16)
+    .padding(left: 20, top: 16, right: 20, bottom: 16)
+    .justifyContent(FlexAlign.Center)
     .backgroundColor(categoryItem.background)
     .borderRadius(12.fp)
     .borderWidth(1)

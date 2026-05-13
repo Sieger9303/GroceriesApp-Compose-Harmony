@@ -5,7 +5,6 @@ import ohos.arkui.state_macro_manage.*
 import ohos.resource.*
 import std.collection.ArrayList
 import ohos_app_cangjie_entry.domain.model.ProductItem
-import ohos_app_cangjie_entry.navigation.ROUTE_SEARCH
 import ohos_app_cangjie_entry.presentation.common.content.listContentProduct
 import ohos_app_cangjie_entry.presentation.component.searchViewBar
 import ohos_app_cangjie_entry.presentation.component.SliderBanner
@@ -58,7 +57,6 @@ public func HeaderLocationHome(): Unit {
 
 @Component
 public class HomeScreen {
-    @StorageLink["main_active_route"] var activeRoute: String = "home_screen"
     @StorageLink["main_search_query"] var searchQuery: String = ""
     @StorageLink["main_selected_product_id"] var selectedProductId: Int64 = 0
     @StorageLink["product_state_revision"] var productStateRevision: Int64 = 0
@@ -70,13 +68,8 @@ public class HomeScreen {
 
                 searchViewBar(STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { value: String =>
                     this.searchQuery = value
-                    if (!value.isEmpty()) {
-                        this.activeRoute = ROUTE_SEARCH
-                    }
-                }, onClickSearch: { =>
-                    if (!this.searchQuery.isEmpty()) {
-                        this.activeRoute = ROUTE_SEARCH
-                    }
+                }, onClickSearch: { value: String =>
+                    this.searchQuery = value
                 })
 
                 SliderBanner()

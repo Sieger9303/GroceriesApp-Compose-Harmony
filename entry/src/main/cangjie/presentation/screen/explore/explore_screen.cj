@@ -10,20 +10,6 @@ import ohos_app_cangjie_entry.ui.theme.Black
 import ohos_app_cangjie_entry.utils.DataDummy
 import ohos_app_cangjie_entry.utils.STRING_FIND_PRODUCTS
 import ohos_app_cangjie_entry.utils.STRING_SEARCH_CATEGORY
-import ohos_app_cangjie_entry.utils.containsNormalizedQuery
-
-func filteredCategories(query: String, categories: ArrayList<CategoryItem>): ArrayList<CategoryItem> {
-    if (query.isEmpty()) {
-        return categories
-    }
-    let filtered = ArrayList<CategoryItem>()
-    for (category in categories) {
-        if (containsNormalizedQuery(category.title, query)) {
-            filtered.add(category)
-        }
-    }
-    return filtered
-}
 
 @Component
 public class ExploreScreen {
@@ -44,14 +30,14 @@ public class ExploreScreen {
                 Column() {
                     searchViewBar(STRING_SEARCH_CATEGORY, query: this.searchQuery, onValueChange: { value: String =>
                         this.searchQuery = value
-                    }, onClickSearch: { =>
-                        this.searchQuery = this.searchQuery
+                    }, onClickSearch: { value: String =>
+                        this.searchQuery = value
                     })
                 }
                 .padding(left: 16, right: 16)
 
                 Grid() {
-                    ForEach(filteredCategories(this.searchQuery, this.categories), itemGenerator: { categoryItem: CategoryItem, idx: Int64 =>
+                    ForEach(this.categories, itemGenerator: { categoryItem: CategoryItem, idx: Int64 =>
                         GridItem() {
                             categoryCard(categoryItem: categoryItem)
                         }
