@@ -15,7 +15,14 @@ func cartProductsForRevision(revision: Int64): ArrayList<ProductItem> {
 
 @Component
 public class CartScreen {
+    @State var cartReloadFlip: Bool = false
     @StorageLink["product_state_revision"] var productStateRevision: Int64 = 0
+
+    func handleDeleteCart(productItem: ProductItem): Unit {
+        CartStateHolder().deleteCart(productItem)
+        this.productStateRevision = this.productStateRevision + 1
+        this.cartReloadFlip = !this.cartReloadFlip
+    }
 
     public func build(): Unit {
         Column() {
@@ -29,10 +36,15 @@ public class CartScreen {
 
             Blank().height(16)
 
-            listContentCart(cartProductsForRevision(this.productStateRevision), onClickDeleteCart: { productItem: ProductItem =>
-                CartStateHolder().deleteCart(productItem)
-                this.productStateRevision = this.productStateRevision + 1
-            })
+            if (this.cartReloadFlip) {
+                listContentCart(cartProductsForRevision(this.productStateRevision), onClickDeleteCart: { productItem: ProductItem =>
+                    this.handleDeleteCart(productItem)
+                })
+            } else {
+                listContentCart(cartProductsForRevision(this.productStateRevision), onClickDeleteCart: { productItem: ProductItem =>
+                    this.handleDeleteCart(productItem)
+                })
+            }
         }
         .width(100.percent)
         .height(100.percent)
