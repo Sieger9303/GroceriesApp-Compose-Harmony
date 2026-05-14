@@ -29,6 +29,11 @@ public class SearchScreen {
             Column(space: 16) {
                 SearchViewBar(hint: STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { _: String =>
                 }, onClickSearch: { _: String =>
+                }, onClickCard: { productItem: ProductItem =>
+                    this.selectedProductId = productItem.id
+                }, onClickAdd: { productItem: ProductItem =>
+                    addSearchResultToCart(productItem)
+                    this.productStateRevision = this.productStateRevision + 1
                 })
 
                 if (normalizedQuery(this.searchQuery).isEmpty()) {

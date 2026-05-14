@@ -2,10 +2,16 @@ package ohos_app_cangjie_entry.presentation.screen.cart
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import std.collection.ArrayList
 import ohos_app_cangjie_entry.domain.model.ProductItem
 import ohos_app_cangjie_entry.presentation.common.content.listContentCart
 import ohos_app_cangjie_entry.ui.theme.Black
 import ohos_app_cangjie_entry.utils.STRING_MY_CART
+
+func cartProductsForRevision(revision: Int64): ArrayList<ProductItem> {
+    let _ = revision
+    return CartStateHolder().getCartProducts()
+}
 
 @Component
 public class CartScreen {
@@ -23,7 +29,7 @@ public class CartScreen {
 
             Blank().height(16)
 
-            listContentCart(CartStateHolder().getCartProducts(), onClickDeleteCart: { productItem: ProductItem =>
+            listContentCart(cartProductsForRevision(this.productStateRevision), onClickDeleteCart: { productItem: ProductItem =>
                 CartStateHolder().deleteCart(productItem)
                 this.productStateRevision = this.productStateRevision + 1
             })

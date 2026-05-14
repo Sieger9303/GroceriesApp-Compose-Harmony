@@ -69,11 +69,9 @@ public class HomeScreen {
             Column(space: 20) {
                 HeaderLocationHome()
 
-                SearchViewBar(hint: STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { value: String =>
-                    if (!normalizedQuery(value).isEmpty()) {
-                        this.activeRoute = ROUTE_SEARCH
-                    }
+                SearchViewBar(hint: STRING_SEARCH_STORE, query: this.searchQuery, onValueChange: { _: String =>
                 }, onClickSearch: { value: String =>
+                    this.searchQuery = value
                     if (!normalizedQuery(value).isEmpty()) {
                         this.activeRoute = ROUTE_SEARCH
                     }
